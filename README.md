@@ -20,6 +20,7 @@ In addition, this project will include:
 
 ## Wireframes
 https://wireframe.cc/knOstJ
+![](./Wireframe.png)
 
 - Nav links include links to this project's Github repo, my LinkedIn and the About modal
 - Legend indicates meaning of colors
