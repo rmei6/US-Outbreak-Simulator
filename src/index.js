@@ -2,7 +2,7 @@ import Flight from "./scripts/flight"
 
 document.addEventListener("DOMContentLoaded", () => {
     let air = new Flight();
-    console.log(air.data);
+    // console.log(air.data);
     // console.log("hi");
 })
 
