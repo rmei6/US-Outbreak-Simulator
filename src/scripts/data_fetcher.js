@@ -7,8 +7,7 @@ const DataFetcher = {
         const airportData = await response.json();
         console.log(airportData);
         // console.log(airportData[query][0].state_full);
-        // return airportData[query][0];
-        return airportData;
+        return airportData[query][0];
     }
 }
 
