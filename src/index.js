@@ -1,9 +1,15 @@
-import Flight from "./scripts/flight"
+import { async } from "regenerator-runtime";
+import Flight from "./scripts/flight";
+import DataFetcher from "./scripts/data_fetcher";
 
 document.addEventListener("DOMContentLoaded", () => {
+    // DataFetcher.getAirport("KDFW");
     let air = new Flight();
-    // console.log(air.data);
+    console.log(air.airport_states);
+    // DataFetcher.getAirport('MDT');
     // console.log("hi");
+    // corsRequest();
+    // apiRequest();
 })
 
 // new Flight();
