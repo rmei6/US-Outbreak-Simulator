@@ -11,13 +11,13 @@
     <script src="./main.js"></script>
     <style>
         path {
-            stroke: white;
+            stroke: gray;
             stroke-width: 0.25px;
-            fill: grey;
+            fill: lightcyan;
         }
-        .FLORIDA,.HAWAII {
+        /* .FLORIDA,.HAWAII {
             fill:lightblue;
-        }
+        } */
         #state:hover{
             fill:red;
         }
@@ -57,15 +57,13 @@
                         <input type="number" id="lock-limit" min="0" max="1" step="0.01" value="0">
                     </label>
                     <label>Lift-Lockdown Limit
-                        <input type="number" id="life-limit" min="0" max="1" step="0.01" value="0">
+                        <input type="number" id="lift-limit" min="0" max="1" step="0.01" value="0">
                     </label>
-                    <input type="submit" value="Add Lockdown State" class="button">
-                    <ul class="lockdown-states">
-                        
-                    </ul>
+                    <input type="submit" id="add" value="Add Lockdown State" class="button">
+                    <ul id="lockdown-states"></ul>
                 </label>
             </form>
-                <input class="button" id="start" type="submit" value="Start Simulation">
+            <button id="start">Start Simulation</button>
             <button id="reset">Reset</button>
         </label>
         <div id="loading_bar"></div>

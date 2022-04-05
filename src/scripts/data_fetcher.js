@@ -5,7 +5,7 @@ const DataFetcher = {
             throw new Error('Network response was not ok');
         }
         const airportData = await response.json();
-        console.log(airportData);
+        // console.log(airportData);
         // console.log(airportData[query][0].state_full);
         return airportData[query][0];
     }

@@ -5,8 +5,10 @@ class Flights{
         this.airport_states = {};
         this.travels = [];
         let that = this;
+        // this.getFlights = this.getFlights.bind(this);
         setTimeout(function(){
             that.travels = that.getFlights();
+            // this.travels = this.getFlights();
         },70000)
         this.getAirportStates();
         // this.getAirportStates = this.getAirportStates.bind(this);
@@ -26,10 +28,10 @@ class Flights{
         });
     }
     
-    async getFlights() {
+    getFlights() {
         const travels = {};
         let that = this;
-        await d3.csv("./assets/flights.csv", function(data){
+        d3.csv("./assets/flights.csv", function(data){
             if(!travels[[data.MONTH,data.DAY]]){
                 travels[[data.MONTH,data.DAY]] = [];
                 console.log([data.MONTH,data.DAY]);
@@ -37,10 +39,11 @@ class Flights{
             travels[[data.MONTH,data.DAY]].push([that.airport_states[data.ORIGIN_AIRPORT],that.airport_states[data.DESTINATION_AIRPORT]]);
         })
         console.log(travels);
+        // debugger;
         return travels;
     }
 
-    async getAirportStates(){
+    async getAirportStates(){   //will need to dynamically split it into arrays of 60 if switching files
         var airports = [];
         await d3.csv("./assets/flights.csv", function(data){
             airports.push(data.ORIGIN_AIRPORT);
@@ -51,6 +54,7 @@ class Flights{
         var part2 = uniqAirports.slice(60);
         let that = this;
         setTimeout(function(){
+            console.log('part2');
             part2.forEach(function(port){
                 DataFetcher.getAirport(port).then(response => {
                     that.airport_states[port] = response.state_full.split(" ").join("_");
@@ -60,8 +64,9 @@ class Flights{
                     that.airport_states[port] = "nowhere";
                 });
             })
-            console.log(that.airport_states);
-        },60000)
+            // console.log(that.airport_states);
+        },65000)
+        console.log('part1');
         part1.forEach(function(port){
             DataFetcher.getAirport(port).then(response => {
                 that.airport_states[port] = response.state_full.split(" ").join("_");
