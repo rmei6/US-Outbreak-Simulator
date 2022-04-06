@@ -15,11 +15,19 @@
             stroke-width: 0.25px;
             fill: lightcyan;
         }
-        /* .FLORIDA,.HAWAII {
-            fill:lightblue;
-        } */
-        #state:hover{
-            fill:red;
+        div.tooltip-donut {
+            position: absolute;
+            text-align: center;
+            padding: .5rem;
+            background: #FFFFFF;
+            color: #313639;
+            border: 1px solid #313639;
+            border-radius: 8px;
+            pointer-events: none;
+            font-size: 1.3rem;
+        }
+        body {
+            background-color: darkslategrey;
         }
     </style>
     <title>US Outbreak Simulator</title>
@@ -34,7 +42,8 @@
     </nav>
     <div id="main-content">
         <div id="map"></div>
-        <label>Simulation Info
+        <div id="legend"></div>
+        <label id="sim-info-header">Simulation Info
             <form id="sim-info">
                 <label class="location">Outbreak Location
                     <select id="location">
@@ -64,10 +73,12 @@
                 </label>
             </form>
             <button id="start">Start Simulation</button>
+            <button id="pause">Pause</button>
+            <button id="unpause">Unpause</button>
             <button id="reset">Reset</button>
         </label>
-        <div id="loading_bar"></div>
     </div>
+    <div id="loading_bar"></div>
 </body>
 
 </html>

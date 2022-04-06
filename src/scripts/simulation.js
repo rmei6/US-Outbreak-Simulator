@@ -14,12 +14,14 @@ const population = {
 class Simulation{
     constructor(data){
         this.initial_num = 100;
+        this.interval = 100;
         this.r_number = 0;
         this.recover = 0;
         this.location = '';
         this.num_passengers = 100;
         this.intervalId = 0;
         this.flights = data;
+        debugger;
         this.date = Object.keys(data)[0].split(",").map(function(item){return parseInt(item);})
         this.lockdown = {}
         this.states = {};
@@ -67,6 +69,10 @@ class Simulation{
     simulate(){
         this.setValues();
         this.states[this.location].infected = this.initial_num;
+        this.startSim();
+    }
+
+    startSim(){
         let that = this;
         this.intervalId = setInterval(function(){
             console.log(that.date);
@@ -76,7 +82,21 @@ class Simulation{
             that.updateMap();
             that.date = that.nextDay(that.date);
             // if(that.date[0] > 8){debugger;}
-        },100)
+        },that.interval)
+    }
+
+    stopSim(){
+        clearInterval(this.intervalId);
+        var locks = document.getElementById('state-info');
+        var start = document.getElementById('start');
+        var pause = document.getElementById('pause');
+        pause.style.display = 'none';
+        start.style.display = 'block';
+        locks.style.display = 'block';
+    }
+
+    pauseSim(){
+        clearInterval(this.intervalId);
     }
 
     updateStates(data){
@@ -88,8 +108,7 @@ class Simulation{
         data.forEach(function(flight){
             var origin = flight[0];
             var dest = flight[1];
-            if(that.available_states.includes(origin) && that.available_states.includes(dest)
-            && !that.lockdown[origin] && !that.lockdown[dest]){
+            if(that.available_states.includes(origin) && that.available_states.includes(dest) && !that.lockdown[origin] && !that.lockdown[dest]){
                 var origin_state = that.states[origin];
                 var dest_state = that.states[dest];
                 origin_state.population -= that.num_passengers;
@@ -99,12 +118,14 @@ class Simulation{
             }
         })
         this.available_states.forEach(function(ele){
-            var num = that.states[ele].infected;
-            var new_inf = Math.ceil(num * that.r_number);
-            if (new_inf > that.states[ele].population){
-                that.states[ele].infected = that.states[ele].population;
-            }else{
-                that.states[ele].infected = new_inf;
+            if(!that.lockdown[ele]){
+                var num = that.states[ele].infected;
+                var new_inf = Math.ceil(num * that.r_number);
+                if (new_inf > that.states[ele].population){
+                    that.states[ele].infected = that.states[ele].population;
+                }else{
+                    that.states[ele].infected = new_inf;
+                }
             }
             that.states[ele].update();
         })
@@ -120,7 +141,7 @@ class Simulation{
         this.available_states.forEach(function(ele){
             var percent = parseFloat(that.states[ele].percent.toFixed(1));
             var color = that.colors[percent];
-            var state = document.getElementsByClassName(ele)[0];
+            var state = document.getElementById(ele);
             // debugger;
             state.style.fill = color;
         })
@@ -157,7 +178,7 @@ class Simulation{
                 if(month === 12){
                     month = 1;
                     //stop interval
-                    clearInterval(this.intervalId);
+                    this.stopSim();
                     debugger;
                 }else{
                     month += 1;
