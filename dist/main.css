@@ -1,4 +1,155 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+  html, body, header, nav, h1, a,
+  ul, li, strong, main, button, i,
+  section, img, div, h2, p, form,
+  fieldset, label, textarea,
+  span, article, footer, time, small {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    vertical-align: inherit;
+    box-sizing: inherit;
+    background: transparent;
+  }
 
+  ul, li {
+    list-style: none;
+  }
+  
+  #title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+  }
+  
+  img {
+    display: block;
+    width: auto;
+    height: auto;
+  }
+/*   
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  } */
+  
+  .buttons > button {
+    margin: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    height: 33px;
+    border-radius: 3px;
+  }
+  
+  #chart {
+    background-color: rgba(30, 27, 47, 0.453);
+  }
+  
+  /* body {
+    display: grid;
+    grid-template: auto 1fr auto / auto 1fr auto;
+  } */
+  
+  .head {
+    display: flex;
+    justify-content: space-between;
+    background-color: #182e39;
+    height: auto;
+    color: white;
+    padding: 2rem;
+    /* grid-column: 1 / 4; */
+    height: auto;
+  }
+
+  #chart {
+    /* grid-column: 1 / 2; */
+    float:left
+  }
+  
+  #info,#date {
+    /* grid-column: 2 / 4; */
+    /* width: 300px; */
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    color: white;
+  }
+
+  #date {
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .buttons {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #sim-info-header,.lockdown {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  /* #main-content {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  } */
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover,button:hover {
+    background-color: #45a049;
+  }
+  
+  /* div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  } */
+  .links {
+    display: flex;
+    padding-right: 30px;
+    padding-top: 10px;
+  }
+
+  .links > li {
+    padding: 0 7px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }

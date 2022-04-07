@@ -73,6 +73,9 @@ class Simulation{
     }
 
     startSim(){
+        var calendar = document.getElementById('date');
+        calendar.style.display = 'block';
+        this.setDate();
         let that = this;
         this.intervalId = setInterval(function(){
             console.log(that.date);
@@ -80,9 +83,38 @@ class Simulation{
             // debugger;
             that.updateStates(data);
             that.updateMap();
-            that.date = that.nextDay(that.date);
+            that.updateDay();
+            // that.date = that.nextDay(that.date);
             // if(that.date[0] > 8){debugger;}
         },that.interval)
+    }
+
+    updateDay(){
+        this.date = this.nextDay(this.date);
+        this.setDate();
+    }
+
+    setDate(){
+        var months = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+        var calendar = document.getElementById('date');
+        var month = months[this.date[0]];
+        var num = this.date[1] % 10;
+        var end = 'th';
+        switch(num){
+            case 1:
+                if(Math.floor(this.date[1]/10) !== 1){end = 'st';}
+                break;
+            case 2:
+                if(Math.floor(this.date[1]/10) !== 1){end = 'nd';}
+                break;
+            case 3:
+                if(Math.floor(this.date[1]/10) !== 1){end = 'rd';}
+                break;
+            default:
+                end = 'th';
+        }
+        debugger;
+        calendar.innerHTML = `${month} ${this.date[1]}${end}`;
     }
 
     stopSim(){
@@ -90,9 +122,13 @@ class Simulation{
         var locks = document.getElementById('state-info');
         var start = document.getElementById('start');
         var pause = document.getElementById('pause');
+        var unpause = document.getElementById('unpause');
+        var calendar = document.getElementById('date');
+        calendar.style.display = 'none';
         pause.style.display = 'none';
-        start.style.display = 'block';
+        unpause.style.display = 'none';
         locks.style.display = 'block';
+        start.style.display = 'block';
     }
 
     pauseSim(){
@@ -149,7 +185,7 @@ class Simulation{
 
     reset(){
         console.log('resetting');
-        clearInterval(this.intervalId);
+        this.stopSim();
         this.populate();
         this.updateMap();
         let that = this;

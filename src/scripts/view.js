@@ -71,12 +71,12 @@ class View{
                      .duration('50')
                      .style("opacity", 0);
            });
-        },1500) //time for map to load
+        },2000) //time for map to load
     }
     createMap(){
         var margin = { top:0,left:0,right:0,bottom:0},
-        width = 960 - margin.top - margin.bottom,
-        height = 600 - margin.left - margin.right;
+        width = 880 - margin.top - margin.bottom,
+        height = 500 - margin.left - margin.right;
         var svg = d3.select('#map')
             .append('svg')
             .attr('width',width + margin.left + margin.right)
@@ -100,29 +100,61 @@ class View{
         })
     }
     createLegend(){
-        var svg = d3.select("#legend").append('svg').attr('width','450').attr('height','300');
-        svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "lightcyan")
-        svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "paleturquoise")
-        svg.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "mediumturquoise")
-        svg.append("circle").attr("cx",200).attr("cy",220).attr("r", 6).style("fill", "darkturquoise")
-        svg.append("circle").attr("cx",200).attr("cy",250).attr("r", 6).style("fill", "cadetblue")
-        svg.append("circle").attr("cx",260).attr("cy",130).attr("r", 6).style("fill", "lightcoral")
-        svg.append("circle").attr("cx",260).attr("cy",160).attr("r", 6).style("fill", "salmon")
-        svg.append("circle").attr("cx",260).attr("cy",190).attr("r", 6).style("fill", "red")
-        svg.append("circle").attr("cx",260).attr("cy",220).attr("r", 6).style("fill", "firebrick")
-        svg.append("circle").attr("cx",260).attr("cy",250).attr("r", 6).style("fill", "darkred")
-        svg.append("circle").attr("cx",260).attr("cy",280).attr("r", 6).style("fill", "purple")
-        svg.append("text").attr("x", 220).attr("y", 130).text("0%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 220).attr("y", 160).text("10%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 220).attr("y", 190).text("20%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 220).attr("y", 220).text("30%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 220).attr("y", 250).text("40%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 280).attr("y", 130).text("50%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 280).attr("y", 160).text("60%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 280).attr("y", 190).text("70%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 280).attr("y", 220).text("80%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 280).attr("y", 250).text("90%").style("font-size", "15px").attr("alignment-baseline","middle")
-        svg.append("text").attr("x", 280).attr("y", 280).text("100%").style("font-size", "15px").attr("alignment-baseline","middle")
+        var svg = d3.select("#legend").append('svg').attr('width','800').attr('height','80');
+        var keys = ['0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'];
+        var color = ['lightcyan','paleturquoise','mediumturquoise','darkturquoise','cadetblue','lightcoral','salmon','red','firebrick','darkred','purple'];
+        var size = 40
+        svg.selectAll("mydots")
+        .data(keys)
+        .enter()
+        .append("rect")
+        .attr("y", 30)
+        .attr("x", function(d,i){ return size*5 + i*(size+2)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("width", size)
+        .attr("height", 15)
+        .style("fill", function(d,i){ return color[i]})
+        
+        // Add one dot in the legend for each name.
+        svg.selectAll("mylabels")
+        .data(keys)
+        .enter()
+        .append("text")
+        .attr("y", 20 + size)
+        .attr("x", function(d,i){ return i*(size+2) + (size*5)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .style("fill", function(d,i){ return color[i]})
+        .text(function(d,i){ return keys[i]})
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+
+        svg.append('text')
+            .attr('x',size*5)
+            .attr('y',20)
+            .style('fill','white')
+            .text('% of population infected');
+        
+        // var svg = d3.select("#legend").append('svg').attr('width','450').attr('height','300');
+        // svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "lightcyan")
+        // svg.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "paleturquoise")
+        // svg.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "mediumturquoise")
+        // svg.append("circle").attr("cx",200).attr("cy",220).attr("r", 6).style("fill", "darkturquoise")
+        // svg.append("circle").attr("cx",200).attr("cy",250).attr("r", 6).style("fill", "cadetblue")
+        // svg.append("circle").attr("cx",260).attr("cy",130).attr("r", 6).style("fill", "lightcoral")
+        // svg.append("circle").attr("cx",260).attr("cy",160).attr("r", 6).style("fill", "salmon")
+        // svg.append("circle").attr("cx",260).attr("cy",190).attr("r", 6).style("fill", "red")
+        // svg.append("circle").attr("cx",260).attr("cy",220).attr("r", 6).style("fill", "firebrick")
+        // svg.append("circle").attr("cx",260).attr("cy",250).attr("r", 6).style("fill", "darkred")
+        // svg.append("circle").attr("cx",260).attr("cy",280).attr("r", 6).style("fill", "purple")
+        // svg.append("text").attr("x", 220).attr("y", 130).text("0%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 220).attr("y", 160).text("10%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 220).attr("y", 190).text("20%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 220).attr("y", 220).text("30%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 220).attr("y", 250).text("40%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 280).attr("y", 130).text("50%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 280).attr("y", 160).text("60%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 280).attr("y", 190).text("70%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 280).attr("y", 220).text("80%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 280).attr("y", 250).text("90%").style("font-size", "15px").attr("alignment-baseline","middle")
+        // svg.append("text").attr("x", 280).attr("y", 280).text("100%").style("font-size", "15px").attr("alignment-baseline","middle")
     }
     createForm(){
         var drop = document.getElementById('location');
@@ -191,7 +223,10 @@ class View{
                     var new_state = document.createElement('button');
                     new_state.setAttribute('value',location.value);
                     new_state.setAttribute('class','lockeddown');
-                    var content = `${location.value} ${lock.value} ${lift.value}`;
+                    new_state.style.border = '1px solid white';
+                    new_state.style.borderRadius = '3px';
+                    new_state.style.margin = '2px';
+                    var content = `${location.value.split('_').join(" ")}<br>Lockdown: ${lock.value}<br>Lift: ${lift.value}`;
                     new_state.innerHTML = content;
                     list.appendChild(new_state);
                     debugger;

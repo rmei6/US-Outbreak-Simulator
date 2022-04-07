@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   main.style.display = 'none';
   var load = document.getElementById('loading_bar');
   load.style.display = 'block';
-  load.innerHTML = "Please wait for 80 seconds and Please don't reload more than once every 2 minutes. This is due to API request limitations";
+  load.append("Please wait for 80 seconds and Please don't reload more than once every 2 minutes. This is due to API request limitations");
   var pause = document.getElementById('pause');
   var unpause = document.getElementById('unpause');
   pause.style.display = 'none';
