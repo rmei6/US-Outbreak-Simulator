@@ -37,17 +37,17 @@ class Flights{
         });
     }
     
-    getFlights() {
+    async getFlights() {
         const travels = {};
         let that = this;
-        d3.csv("./assets/flights.csv", function(data){
+        await d3.csv("./assets/flights.csv", function(data){
             if(!travels[[data.MONTH,data.DAY]]){
                 travels[[data.MONTH,data.DAY]] = [];
                 // console.log([data.MONTH,data.DAY]);
             }
             travels[[data.MONTH,data.DAY]].push([that.airport_states[data.ORIGIN_AIRPORT],that.airport_states[data.DESTINATION_AIRPORT]]);
         })
-        // console.log(travels);
+        console.log(travels);
         // debugger;
         return travels;
     }

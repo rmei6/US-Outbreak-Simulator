@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let data = air.travels;
     let view = new View(data,document);
     // debugger;
-  },180000)    //need time for csv file read
+  },80000)    //need time for csv file read
 })
 
 
