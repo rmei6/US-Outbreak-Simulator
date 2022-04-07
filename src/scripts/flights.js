@@ -37,10 +37,10 @@ class Flights{
         });
     }
     
-    async getFlights() {
+    getFlights() {
         const travels = {};
         let that = this;
-        await d3.csv("./assets/flights.csv", function(data){
+        d3.csv("./assets/flights.csv", function(data){
             if(!travels[[data.MONTH,data.DAY]]){
                 travels[[data.MONTH,data.DAY]] = [];
                 // console.log([data.MONTH,data.DAY]);
