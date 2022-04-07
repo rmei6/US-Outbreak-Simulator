@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   var load = document.getElementById('loading_bar');
   load.style.display = 'block';
   var warning = document.getElementById('warning');
-  warning.innerHTML = "Please wait for 80 seconds and Please don't reload more than once every 2 minutes. This is due to API request limitations";
+  warning.innerHTML = "Please wait for 90 seconds and Please don't reload more than once every 2 minutes. This is due to API request limitations";
   var pause = document.getElementById('pause');
   var unpause = document.getElementById('unpause');
   pause.style.display = 'none';
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let data = air.travels;
     let view = new View(data,document);
     // debugger;
-  },10000)//80000)    //need time for csv file read
+  },90000)//80000)    //need time for csv file read
 })
 
 
