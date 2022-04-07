@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(function(){
     load.style.display = 'none';
     main.style.display = 'block';
-    console.log(air.travels);
+    // console.log(air.travels);
     let data = air.travels;
-    let view = new View(air.travels,document);
+    let view = new View(data,document);
     debugger;
-  },500)//75000)    //need time for csv file read
+  },75000)    //need time for csv file read
 })
 
 

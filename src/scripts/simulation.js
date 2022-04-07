@@ -68,7 +68,7 @@ class Simulation{
 
     simulate(){
         this.setValues();
-        this.states[this.location].infected = this.initial_num;
+        this.states[this.location].infected += this.initial_num;
         this.startSim();
     }
 
