@@ -21,6 +21,7 @@ class Simulation{
         this.num_passengers = 100;
         this.intervalId = 0;
         this.flights = data;
+        console.log(data);
         debugger;
         this.date = Object.keys(data)[0].split(",").map(function(item){return parseInt(item);})
         this.lockdown = {}
