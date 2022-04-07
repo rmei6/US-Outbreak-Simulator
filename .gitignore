@@ -3,4 +3,3 @@ node_modules/
 .env
 main.js
 main.js.map
-flights.csv
