@@ -188,7 +188,8 @@ class Simulation{
         this.stopSim();
         this.populate();
         this.updateMap();
-        this.date = Object.keys(data)[0].split(",").map(function(item){return parseInt(item);})
+        this.date = [1,1];
+        this.setDate();
         let that = this;
         this.available_states.forEach(function(ele){
             that.lockdown[ele] = false;
