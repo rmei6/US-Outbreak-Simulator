@@ -1,28 +1,52 @@
-# Outbreak Simulator
+# US Outbreak Simulator
 
-## Background
+This is a simulator of a viral outbreak in the United States in the span of 1 year.
+Live Link: https://us-outbreak-simulator.herokuapp.com/
 
-In light of the COVID-19 during the last 2 years and the many variants being discovered,
+Select the state in which the outbreak would start in addition to the infection rate and recovery rate of the virus. You can also set lockdown procedures for the states which they implement based on their current infection percentage. You may start, pause and reset the simulation as you please. Hover over states to see their statistics. You may also run concurrent simulations to see how the viral outbreak would affect the US for many years, although it would be based on the assumption that flight behavior remains constant.
+<!-- ## Background -->
+
+<!-- In light of the COVID-19 during the last 2 years and the many variants being discovered,
 I wanted to create a simulator that mimicked the map created by Johns Hopkins University to record global cases.
 This simulator may show that could have happened if countermeasures were done differently or if a future outbreak occurs within the United States.
-The spread of infection will be based on flight data.
+The spread of infection will be based on flight data. -->
+## Technologies, Libraries, and APIs Used
+
+- D3 version 7
+- Topojson v3
+- Javascript
+- CSS
+- HTML
+- CSV file of flight data
+- Aviationapi for parsing airport data
 
 ## Functionality and MVPs
 
-With this outbreak simulator, users will be able to:
+Completed Functions: 
 - Set the state in which the outbreak starts
 - Set the infectiousness of the virus (via the R number)
+- Set the recovery rate of the virus
 - Set which states proceed with lockdown protocols
 - Get statistics from each state by hovering over the map
-In addition, this project will include:
+- Pause/Unpause the simulation
+- Reset the simulation
+- Start new simulation based on past simulation results
+Missing Functions:
 - An About modal describing the background of this simulator
-- A production README
+Subpar Functions: 
+- Flight data prevents infection to several states
+- Long read time of local CSV file
+Bonus Features:
+- Chart to show the top 10 most infected states
+- Extend to global map
+- Making a click functionality rather than a dropdown
+- Animating the flights
 
 ## Wireframes
 https://wireframe.cc/knOstJ
-![](./Wireframe.png)
+![](.dist/assets/Wireframe.png)
 
-- Nav links include links to this project's Github repo, my LinkedIn and the About modal
+- Nav links include links to this project's Github repo and my LinkedIn
 - Legend indicates meaning of colors
 - Dropdown input to set "Start State" on right
 - Text input to set "R Number" on right
@@ -30,26 +54,10 @@ https://wireframe.cc/knOstJ
 - Start button under Lockdown States
 - Pause button under Lockdown States
 
-## Technologies, Libraries, APIs
-
-This project will be implemented with the following technologies:
-- d3 to render the chart
-- Aviation Stack API for flight data
-- Aviationapi for interpreting flight startpoints and destinations
-
-## Implementation Timeline
-NB:
-- Friday Afternoon & Weekend: Setup project. Spend time to get used to d3. Create State and flight classes. Render the map.
-- Monday: Implement the underlying logic of the states statistics. Render if time.
-- Tuesday: Get logic to run and render correctly. Ensure proper user inputs.
-- Wednesday: Focus on Styling. Do Bonuses if time.
-- Thursday Morning: Deploy to GitHub pages. If time, rewrite this proposal as a production README.
+## Screenshots
+Starting Map
+![](./dist/assets/Start%20Map.png)
+Ending Map
+![](./dist/assets/End%20Map.png)
 
 
-## Bonus Features
-Some possible updates include:
-- Making this global
-- Making a click functionality rather than a dropdown
-- Being able to pause the simulation to better analyze the situation
-- Adding a table on the side to moniter which state has most cases
-- Animating the flights
