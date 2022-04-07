@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     main.style.display = 'block';
     // console.log(air.travels);
     let data = air.travels;
-    console.log(data);
+    // console.log(data);
     let view = new View(data,document);
     // debugger;
   },90000)//80000)    //need time for csv file read

@@ -47,7 +47,7 @@ class Flights{
             }
             travels[[data.MONTH,data.DAY]].push([that.airport_states[data.ORIGIN_AIRPORT],that.airport_states[data.DESTINATION_AIRPORT]]);
         })
-        console.log(travels);
+        // console.log(travels);
         // debugger;
         return travels;
     }

@@ -12,7 +12,7 @@ class View{
         this.createLegend();
         this.createForm();
         this.data = data;
-        console.log(data);
+        // console.log(data);
         this.sim = new Simulation(data,document);
 
         this.start = document.getElementById('start');
