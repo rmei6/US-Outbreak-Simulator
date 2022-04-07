@@ -42,6 +42,7 @@ Bonus Features:
 - Extend to global map
 - Making a click functionality rather than a dropdown
 - Animating the flights
+- Create scroll bar for seeing past states
 
 ## Wireframes
 https://wireframe.cc/knOstJ
