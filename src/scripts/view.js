@@ -211,13 +211,13 @@ class View{
                 }
             }
             if(free){
-                debugger;
+                // debugger;
                 if(lock.value < lift.value){
-                    debugger;
+                    // debugger;
                     alert("Invalid Limits");
                     e.preventDefault();
                 }else{
-                    debugger;
+                    // debugger;
                     e.preventDefault(); //to prevent page from reloading
                     this.sim.addLockdown();
                     var new_state = document.createElement('button');
@@ -229,9 +229,9 @@ class View{
                     var content = `${location.value.split('_').join(" ")}<br>Lockdown: ${lock.value}<br>Lift: ${lift.value}`;
                     new_state.innerHTML = content;
                     list.appendChild(new_state);
-                    debugger;
+                    // debugger;
                     new_state.addEventListener('click',this.removeLock);
-                    debugger;
+                    // debugger;
                 }
             }
         }

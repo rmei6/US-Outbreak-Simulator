@@ -21,7 +21,7 @@ class Simulation{
         this.num_passengers = 100;
         this.intervalId = 0;
         this.flights = data;
-        debugger;
+        // debugger;
         this.date = Object.keys(data)[0].split(",").map(function(item){return parseInt(item);})
         this.lockdown = {}
         this.states = {};
@@ -36,7 +36,7 @@ class Simulation{
         ,0.7:'red',0.8:'firebrick',0.9:'darkred',1:'purple'};
         this.populate();
         // console.log(this.states);
-        console.log(this.available_states);
+        // console.log(this.available_states);
     }
 
     populate(){
@@ -78,7 +78,7 @@ class Simulation{
         this.setDate();
         let that = this;
         this.intervalId = setInterval(function(){
-            console.log(that.date);
+            // console.log(that.date);
             var data = that.flights[that.date];
             // debugger;
             that.updateStates(data);
@@ -113,7 +113,7 @@ class Simulation{
             default:
                 end = 'th';
         }
-        debugger;
+        // debugger;
         calendar.innerHTML = `${month} ${this.date[1]}${end}`;
     }
 
@@ -184,11 +184,11 @@ class Simulation{
     }
 
     reset(){
-        console.log('resetting');
+        // console.log('resetting');
         this.stopSim();
         this.populate();
         this.updateMap();
-        this.date = [1,1];
+        this.date = Object.keys(this.flights)[0].split(",").map(function(item){return parseInt(item);})
         this.setDate();
         let that = this;
         this.available_states.forEach(function(ele){
@@ -217,7 +217,7 @@ class Simulation{
                     month = 1;
                     //stop interval
                     this.stopSim();
-                    debugger;
+                    // debugger;
                 }else{
                     month += 1;
                 }

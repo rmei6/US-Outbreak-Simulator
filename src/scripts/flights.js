@@ -43,11 +43,11 @@ class Flights{
         d3.csv("./assets/flights.csv", function(data){
             if(!travels[[data.MONTH,data.DAY]]){
                 travels[[data.MONTH,data.DAY]] = [];
-                console.log([data.MONTH,data.DAY]);
+                // console.log([data.MONTH,data.DAY]);
             }
             travels[[data.MONTH,data.DAY]].push([that.airport_states[data.ORIGIN_AIRPORT],that.airport_states[data.DESTINATION_AIRPORT]]);
         })
-        console.log(travels);
+        // console.log(travels);
         // debugger;
         return travels;
     }
@@ -65,7 +65,7 @@ class Flights{
         var cont = true;
         setTimeout(function(){
             if (cont){
-                console.log('part2');
+                // console.log('part2');
                 part2.forEach(function(port){
                     DataFetcher.getAirport(port).then(response => {
                         that.airport_states[port] = response.state_full.split(" ").join("_");
@@ -76,11 +76,11 @@ class Flights{
                     });
                 })
             }else{
-                console.log("no part 2");
+                // console.log("no part 2");
             }
             // console.log(that.airport_states);
         },65000)
-        console.log('part1');
+        // console.log('part1');
         part1.forEach(function(port){
             DataFetcher.getAirport(port).then(response => {
                 that.airport_states[port] = response.state_full.split(" ").join("_");

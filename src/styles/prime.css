@@ -170,3 +170,8 @@ html, body, header, nav, h1, a,
     width: 30px;
     height: 30px;
   }
+
+  #warning {
+      color: white;
+      font-size: medium;
+  }
