@@ -32,12 +32,18 @@ Completed Functions:
 - Pause/Unpause the simulation
 - Reset the simulation
 - Start new simulation based on past simulation results
+
 Missing Functions:
+
 - An About modal describing the background of this simulator
+
 Subpar Functions: 
+
 - Flight data prevents infection to several states
-- Long read time of local CSV file
+- Long read time of local CSV file (It takes a few seconds on my personal machine, but it takes 90 seconds on heroku)
+
 Bonus Features:
+
 - Chart to show the top 10 most infected states
 - Extend to global map
 - Making a click functionality rather than a dropdown
