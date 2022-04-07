@@ -1,6 +1,7 @@
 # US Outbreak Simulator
 
 This is a simulator of a viral outbreak in the United States in the span of 1 year.
+
 Live Link: https://us-outbreak-simulator.herokuapp.com/
 
 Select the state in which the outbreak would start in addition to the infection rate and recovery rate of the virus. You can also set lockdown procedures for the states which they implement based on their current infection percentage. You may start, pause and reset the simulation as you please. Hover over states to see their statistics. You may also run concurrent simulations to see how the viral outbreak would affect the US for many years, although it would be based on the assumption that flight behavior remains constant.
@@ -44,7 +45,7 @@ Bonus Features:
 
 ## Wireframes
 https://wireframe.cc/knOstJ
-![](.dist/assets/Wireframe.png)
+![](./dist/assets/Wireframe.png)
 
 - Nav links include links to this project's Github repo and my LinkedIn
 - Legend indicates meaning of colors
