@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(data);
     let view = new View(data,document);
     // debugger;
-  },90000)//80000)    //need time for csv file read
+  },1500)//80000)    //need time for csv file read
 })
 
 
