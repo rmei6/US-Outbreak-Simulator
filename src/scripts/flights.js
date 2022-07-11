@@ -40,10 +40,10 @@ class Flights{
     getFlights() {
         const travels = {};
         let that = this;
-        d3.csv("./assets/flights.csv", function(data){
+        d3.csv("./assets/flights_only_data_and_places.csv", function(data){
             if(!travels[[data.MONTH,data.DAY]]){
                 travels[[data.MONTH,data.DAY]] = [];
-                // console.log([data.MONTH,data.DAY]);
+                console.log([data.MONTH,data.DAY]);
             }
             travels[[data.MONTH,data.DAY]].push([that.airport_states[data.ORIGIN_AIRPORT],that.airport_states[data.DESTINATION_AIRPORT]]);
         })
