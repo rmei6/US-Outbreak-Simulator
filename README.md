@@ -33,14 +33,9 @@ Completed Functions:
 - Reset the simulation
 - Start new simulation based on past simulation results
 
-Missing Functions:
-
-- An About modal describing the background of this simulator
-
 Subpar Functions: 
 
 - Flight data prevents infection to several states
-- Long read time of local CSV file (It takes a few seconds on my personal machine, but it takes 90 seconds on heroku)
 
 Bonus Features:
 
