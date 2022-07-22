@@ -57,8 +57,8 @@ class View{
                     .duration(50)
                     .style('opacity','1');
                 tooltip.html(`${state.name.split("_").join(" ")}<br>
-                                 Population: ${state.population}<br>
-                                 Infected: ${state.infected}<br>
+                                 Population: ${state.population.toLocaleString('en-US')}<br>
+                                 Infected: ${state.infected.toLocaleString('en-US')}<br>
                                  Percentage: ${Math.ceil(state.percent * 100)}%<br>
                                  ${state.allow_lockdown ? `${state.lockdown ? 'Under Lockdown' : 'Lockdown Lifted'}` : `No Lockdown Protocol`}`)
                     .style("left", (event.pageX + 10) + "px")
@@ -213,7 +213,7 @@ class View{
             }
             if(free){
                 // debugger;
-                if(lock.value < lift.value){
+                if(lock.value < lift.value || lock.value < 0 || lift.value < 0 || lock.value > 100 || lift.value > 100 || lock.value === lift.value){
                     // debugger;
                     alert("Invalid Limits");
                     e.preventDefault();
@@ -226,8 +226,10 @@ class View{
                     new_state.setAttribute('class','lockeddown');
                     new_state.style.border = '1px solid white';
                     new_state.style.borderRadius = '3px';
-                    new_state.style.margin = '2px';
-                    var content = `${location.value.split('_').join(" ")}<br>Lockdown: ${lock.value}<br>Lift: ${lift.value}`;
+                    new_state.style.margin = '5px';
+                    new_state.style.padding = '5px';
+                    new_state.style.cursor = "pointer";
+                    var content = `${location.value.split('_').join(" ")}<br>Lockdown: ${lock.value}%<br>Lift: ${lift.value}%`;
                     new_state.innerHTML = content;
                     list.appendChild(new_state);
                     // debugger;

@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   var main = document.getElementById('main-content');
   main.style.display = 'none';
   var load = document.getElementById('loading_bar');
-  load.style.display = 'block';
+  load.style.display = 'flex';
   var warning = document.getElementById('warning');
-  warning.innerHTML = "Please wait for 90 seconds and Please don't reload more than once every 2 minutes. This is due to slow Heroku CSV read times";
+  // warning.innerHTML = "Loading";
   var pause = document.getElementById('pause');
   var unpause = document.getElementById('unpause');
   pause.style.display = 'none';
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(data);
     let view = new View(data,document);
     // debugger;
-  },1500)//80000)    //need time for csv file read
+  },2000)//80000)    //need time for csv file read
 })
 
 

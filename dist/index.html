@@ -9,22 +9,40 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <script src="./main.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
     <title>US Outbreak Simulator</title>
 </head>
 
 <body>
     <nav class="head">
         <h1 id="title">US Outbreak Simulator</h1>
+        <div class="directions">
+            <p>This is a simulator of a viral outbreak in the United States in the span of 1 year based on American Airlines (AA) flight data of 2015.
+                To start, select a state in which 100 infected individuals would be placed.
+                Set the r-number (number of people that 1 individual will infect) and recovery rate.
+                You may also set up lockdown protocols for states to show a more realistic outcome.
+                Then, you can start the simulation. Consecutive simulations are possible.
+            </p>
+        </div>
         <ul class="links">
             <li>
-                <a href="https://github.com/rmei6/US-Outbreak-Simulator">
-                    <img class="logo" id="git-link" src="./assets/github_logo.png" alt="">
+                <a  href="https://github.com/rmei6/US-Outbreak-Simulator">
+                    <!-- class="fa-brands fa-github-square fa-3x" -->
+                    <i class="fab fa-github-square fa-4x"></i>
+                    <!-- <img class="logo" id="git-link" src="./assets/github_logo.png" alt=""> -->
+                    <!-- <i className="fa fa-github"></i> -->
+                    <!-- <i class="fa fa-github-square" aria-hidden="true"></i> -->
                 </a>
             </li>
             <li>
                 <a href="https://www.linkedin.com/in/runqiangmei/">
-                    <img class="logo" id="linkedin-link" src="./assets/linkedin_logo.png" alt="">
+                    <i class="fab fa-linkedin fa-4x"></i>
+                    <!-- <img class="logo" id="linkedin-link" src="./assets/linkedin_logo.png" alt=""> -->
+                    <!-- <i className="fa fa-linkedin-square"></i> -->
+                    <!-- <i class="fa fa-linkedin-square" aria-hidden="true"></i> -->
                 </a>
+                <!-- <a class="p-icon--github" href="https://www.linkedin.com/in/runqiangmei/"></a> -->
             </li>
         </ul>
     </nav>
@@ -37,28 +55,38 @@
         <div id="info">
             <label id="sim-info-header">Simulation Info</label>
                 <form id="sim-info">
-                    <label class="location">Outbreak Location
-                        <select id="location">
-                            <option value="" selected disabled hidden>Select A Location</option>
-                        </select>
-                    </label>
-                    <label class="r-number-label">R Number (Infection Rate)
-                        <input type="number" id="r-number" min="1" max="100" step="0.01" value="1">
-                    </label>
-                    <label class="recovery-rate-label">Recovery Rate
-                        <input type="number" id="recovery-number" min="0" max="1" step="0.01" value="0">
-                    </label>
+                    <label class="location">Outbreak Location</label>
+                        <div class="location-container">
+                            <select id="location">
+                                <option value="" selected disabled hidden>Select A Location</option>
+                            </select>
+                        </div>
+                    <div class="r-numbers">
+                        <label class="r-number-label" title="How many people one person will infect">R Number (Infection Rate)
+                            <input type="number" id="r-number" min="0" max="100" step="0.01" value="0">
+                        </label>
+                        <label class="recovery-rate-label" title="Percent of population that recovers">Recovery Rate
+                            <input type="number" id="recovery-number" min="0" max="100" step="1" value="0">
+                        %</label>
+                    </div>
                 </form>
                 <form id="state-info">
                     <label class="lockdown">Lockdown States</label>
-                        <select id="lockdowns">
-                            <option value="" selected disabled hidden>Select State(s)</option>
-                        </select>
-                        <label>Lockdown Limit</label>
-                            <input type="number" id="lock-limit" min="0" max="1" step="0.01" value="0">
-                        <label>Lift-Lockdown Limit</label>
-                            <input type="number" id="lift-limit" min="0" max="1" step="0.01" value="0">
+                        <div class="lockdowns-container">
+                            <select id="lockdowns">
+                                <option value="" selected disabled hidden>Select State(s)</option>
+                            </select>
+                        </div>
+                        <div class="lockdown-numbers">
+                            <label title="% of infection when the state implements lockdown">Lockdown Limit
+                                <input type="number" id="lock-limit" min="0" max="100" step="1" value="0">
+                            %</label>
+                            <label title="% of infection when the state lifts lockdown">Lift-Lockdown Limit
+                                <input type="number" id="lift-limit" min="0" max="100" step="1" value="0">
+                            %</label>
+                        </div>
                         <input type="submit" id="add" value="Add Lockdown State" class="button">
+                        <span class="lockdown-suggestion">* Click to Remove States</span>
                         <ul id="lockdown-states"></ul>
                 </form>
                 <div class="buttons">
@@ -69,9 +97,11 @@
                 </div>
         </div>
     </div>
+
     <div id="loading_bar">
-        <label id="warning"></label>
-        <img src="./assets/loading.jpeg" alt="">
+        <label id="warning"><i class="fas fa-sync fa-spin fa-10x"></i></i></label>
+        <!-- <i class="fas fa-sync fa-spin"></i> -->
+        <!-- <img src="./assets/loading.jpeg" alt=""> -->
     </div>
 </body>
 

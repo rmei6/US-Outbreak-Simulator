@@ -51,10 +51,13 @@ class Simulation{
         var location = document.getElementById('lockdowns');
         var lock = document.getElementById('lock-limit');
         var lift = document.getElementById('lift-limit');
+        // debugger;
         this.states[location.value].allow_lockdown = true;
+        let lock_value = lock.value / 100.0;
+        let lift_value = lift.value / 100.0;
 
-        this.states[location.value].lock_limit = lock.value;
-        this.states[location.value].lift_limit = lift.value;
+        this.states[location.value].lock_limit = lock_value > 1 ? 1.0 : lock_value;
+        this.states[location.value].lift_limit = lift_value > 1 ? 1.0 : lift_value;
     }
 
     removeLock(location){
@@ -62,9 +65,12 @@ class Simulation{
     }
 
     setValues(){
+        let infection_rate = parseFloat(document.getElementById('r-number').value) + 1.0;
+        let recovery_rate = parseFloat(document.getElementById('recovery-number').value) / 100.0;
         this.location = document.getElementById('location').value;
-        this.r_number = document.getElementById('r-number').value;
-        this.recover = document.getElementById('recovery-number').value;
+        this.r_number = infection_rate > 101 ? 101.0 : infection_rate;
+        // debugger;
+        this.recover = recovery_rate > 1 ? 1.0 : recovery_rate;
     }
 
     simulate(){
@@ -128,7 +134,7 @@ class Simulation{
         calendar.style.display = 'none';
         pause.style.display = 'none';
         unpause.style.display = 'none';
-        locks.style.display = 'block';
+        locks.style.display = 'flex';
         start.style.display = 'block';
     }
 
@@ -158,6 +164,7 @@ class Simulation{
             if(!that.lockdown[ele]){
                 var num = that.states[ele].infected;
                 var new_inf = Math.ceil(num * that.r_number);
+                debugger;
                 if (new_inf > that.states[ele].population){
                     that.states[ele].infected = that.states[ele].population;
                 }else{
