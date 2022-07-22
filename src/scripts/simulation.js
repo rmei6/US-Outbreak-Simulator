@@ -164,7 +164,7 @@ class Simulation{
             if(!that.lockdown[ele]){
                 var num = that.states[ele].infected;
                 var new_inf = Math.ceil(num * that.r_number);
-                debugger;
+                // debugger;
                 if (new_inf > that.states[ele].population){
                     that.states[ele].infected = that.states[ele].population;
                 }else{
