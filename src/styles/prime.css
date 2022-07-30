@@ -244,8 +244,15 @@ html, body, header, nav, h1, a,
   }
 
   #lockdowns,#location{
-    width: 40%;
+    width: 45%;
   }
+  
+  @media only screen and (max-width: 300px) { 
+    #lockdowns,#location{
+      width: 60%;
+    }
+  }
+  
 
   .location-container,.lockdowns-container{
     display: flex;
@@ -293,20 +300,68 @@ html, body, header, nav, h1, a,
       width: 90vw;
       margin-top: 5vw;
     }
+    .introduction{
+      margin-right: 5vw;
+    }
   }
   path.state{
     transform: translate(9vw,10vh);
   }
+  @media only screen and (max-width: 1000px) {
+    path.state{
+      /* transform: translate(-10vw,-10vh); */
+      transform: translate(20vw,10vh);
+    }
+  }
+
+  @media only screen and (max-width: 950px) { 
+    path.state{
+      transform: translate(-10vw,-5vh);
+    }
+  }
   
   @media only screen and (max-width: 900px) { 
     path.state{
-      transform: translate(-20vw,-20vh);
+      /* transform: translate(-30vw,-30vh); */
+      /* transform: translate(-30vw,-20vh); */
+      transform: translate(-10vw,-10vh);
+    }
+  }
+
+  @media only screen and (max-width: 850px) { 
+    path.state{
+      transform: translate(-10vw,-4vh);
+    }
+  }
+
+  @media only screen and (max-width: 700px) { 
+    path.state{
+      transform: translate(-15vw,-15vh);
     }
   }
 
   @media only screen and (max-width: 600px) { 
     path.state{
       transform: translate(-90vw,-44vw);
+      
+    }
+  }
+
+  @media only screen and (max-width: 550px) { 
+    path.state{
+      transform: translate(-40vw,-20vw);
+    }
+  }
+
+  @media only screen and (max-width: 450px) { 
+    path.state{
+      transform: translate(-70vw,-35vw);
+    }
+  }
+
+  @media only screen and (max-width: 300px) { 
+    path.state{
+      transform: translate(-130vw,-68vw);
     }
   }
 

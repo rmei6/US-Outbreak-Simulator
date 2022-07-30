@@ -80,8 +80,8 @@ class View{
         // var margin = { top:0,left:-1000,right:0,bottom:0},
         // width = 880 - margin.top - margin.bottom,   //change width and height to adjust to screen width
         // height = 500 - margin.left - margin.right;
-        width = (screen.width * 0.75) - margin.left - margin.right,   //change width and height to adjust to screen width
-        height = (screen.width * 0.75 / 1.76) - margin.top - margin.bottom;
+        width = (screen.width * 0.9) - margin.left - margin.right,   //change width and height to adjust to screen width
+        height = (screen.width * 0.9 / 1.76) - margin.top - margin.bottom;
         var svg = d3.select('#map')
             .append('svg')
             .attr('width',width + margin.left + margin.right)
@@ -108,10 +108,10 @@ class View{
     createLegend(){
         var svg = d3.select("#legend").append('svg').attr('width','800').attr('height','80');
         // var svg = d3.select("#legend").append('svg').attr('width',screen.width * 0.8).attr('height','80');
-        var keys = ['0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'];
+        var keys = ['0','10','20','30','40','50','60','70','80','90','100'];
         var color = ['lightcyan','paleturquoise','mediumturquoise','darkturquoise','cadetblue','lightcoral','salmon','red','firebrick','darkred','purple'];
         // var size = screen.width * 0.1           //do 
-        var size = 30           
+        var size = screen.width < 375 ? screen.width / 12.5 : 30           
         svg.selectAll("mydots")
         .data(keys)
         .enter()
@@ -128,7 +128,7 @@ class View{
         .data(keys)
         .enter()
         .append("text")
-        .attr("y", 25 + size)
+        .attr("y", 40 + size)
         // .attr("y", size)
         // .attr("x", function(d,i){ return i*(size+2) + (size*5)}) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("x", function(d,i){ return i*(size+2)}) // 100 is where the first dot appears. 25 is the distance between dots
@@ -138,10 +138,10 @@ class View{
         .style("alignment-baseline", "middle")
 
         svg.append('text')
-            .attr('x',size*3)
+            .attr('x',size)
             .attr('y',20)
             .style('fill','white')
-            .text('% of population infected');
+            .text('Percentage of population infected');
         
         // var svg = d3.select("#legend").append('svg').attr('width','450').attr('height','300');
         // svg.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "lightcyan")
