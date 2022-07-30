@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //load loading bar (load.js) if possible
   setTimeout(function(){
     load.style.display = 'none';
-    main.style.display = 'block';
+    main.style.display = 'flex';
     // console.log(air.travels);
     let data = air.travels;
     // console.log(data);

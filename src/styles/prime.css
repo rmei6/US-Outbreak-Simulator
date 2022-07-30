@@ -43,6 +43,7 @@ html, body, header, nav, h1, a,
   #title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 40px;
+    text-align: center;
   }
   
   img {
@@ -80,7 +81,7 @@ html, body, header, nav, h1, a,
     grid-template: auto 1fr auto / auto 1fr auto;
   } */
   
-  .head {
+  .head,.mobile-head {
     display: flex;
     justify-content: space-between;
     background-color: #182e39;
@@ -90,6 +91,14 @@ html, body, header, nav, h1, a,
     /* grid-column: 1 / 4; */
     height: auto;
     align-items: center;
+  }
+
+  .head{
+    flex-direction: row;
+  }
+
+  .mobile-head{
+    flex-direction: column;
   }
 
   #chart {
@@ -134,6 +143,11 @@ html, body, header, nav, h1, a,
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   } */
+
+  #main-content{
+    display: flex;
+    flex-direction: column;
+  }
 
   input[type=text], select {
     width: 100%;
@@ -189,13 +203,16 @@ html, body, header, nav, h1, a,
   #loading_bar {
     height: calc(100vh - 122px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    /* justify-content: space-between; */
     align-items: center;
   }
 
-  #warning {
+  .warning {
       color: white;
       font-size: medium;
+      margin-bottom: 5%;
   }
 
   .r-numbers,.lockdown-numbers{

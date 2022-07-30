@@ -76,7 +76,7 @@ class View{
     }
     createMap(){
         var margin = { top:0,left:0,right:0,bottom:0},
-        width = 880 - margin.top - margin.bottom,
+        width = 880 - margin.top - margin.bottom,   //change width and height to adjust to screen width
         height = 500 - margin.left - margin.right;
         var svg = d3.select('#map')
             .append('svg')
