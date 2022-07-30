@@ -3,7 +3,7 @@ import DataFetcher from "./scripts/data_fetcher";
 import View from "./scripts/view";
 import Simulation from "./scripts/simulation";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { //do difference thing depending on mobile
   let air = new Flights();
   var main = document.getElementById('main-content');
   main.style.display = 'none';

@@ -77,6 +77,7 @@ html, body, header, nav, h1, a,
   
   #chart {
     background-color: rgba(30, 27, 47, 0.453);
+    width: 100vw;
   }
   
   /* body {
@@ -84,7 +85,7 @@ html, body, header, nav, h1, a,
     grid-template: auto 1fr auto / auto 1fr auto;
   } */
   
-  .head,.mobile-head {
+  .head{
     display: flex;
     justify-content: space-between;
     background-color: #182e39;
@@ -94,14 +95,13 @@ html, body, header, nav, h1, a,
     /* grid-column: 1 / 4; */
     height: auto;
     align-items: center;
-  }
-
-  .head{
     flex-direction: row;
   }
 
-  .mobile-head{
-    flex-direction: column;
+  @media only screen and (max-width: 600px) { 
+    .head{
+      flex-direction: column;
+    }
   }
 
   #chart {
@@ -215,17 +215,39 @@ html, body, header, nav, h1, a,
   .warning {
       color: white;
       font-size: medium;
-      margin-bottom: 5%;
+      /* margin-bottom: 5%; */
+      margin-top: 15%;
+  }
+
+  #map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   .r-numbers,.lockdown-numbers{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 45%;
+    align-self: center;
+  }
+
+  @media only screen and (max-width: 600px) { 
+    .r-numbers,.lockdown-numbers{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .r-numbers > *,.lockdown-numbers > *{
+      width: 137%;
+      align-self: center;
+    }
   }
 
   #lockdowns,#location{
-    width: 80%;
+    width: 40%;
   }
 
   .location-container,.lockdowns-container{
@@ -236,13 +258,16 @@ html, body, header, nav, h1, a,
   }
 
   #add{
-    width: 60%;
+    width: 30%;
     align-self: center;
   }
 
   #lockdown-states{
     display: flex;
     flex-wrap: wrap;
+    width: 60%;
+    align-self: center;
+    justify-content: center;
   }
 
   #state-info{
@@ -264,6 +289,33 @@ html, body, header, nav, h1, a,
   .directions{
     width: 50%;
     font-size: 14px;
+  }
+
+  @media only screen and (max-width: 600px) { 
+    .directions{
+      width: 90vw;
+      margin-top: 5vw;
+    }
+  }
+  path.state{
+    transform: translate(9vw,10vh);
+  }
+  
+  @media only screen and (max-width: 900px) { 
+    path.state{
+      transform: translate(-20vw,-20vh);
+    }
+  }
+
+  @media only screen and (max-width: 600px) { 
+    path.state{
+      transform: translate(-90vw,-44vw);
+    }
+  }
+
+  #legend{
+    margin-left: 2vw;
+    width: calc(100% - 2vw);
   }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!

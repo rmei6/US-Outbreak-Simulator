@@ -75,16 +75,21 @@ class View{
         },2000) //time for map to load
     }
     createMap(){
+        // debugger;
         var margin = { top:0,left:0,right:0,bottom:0},
-        width = 880 - margin.top - margin.bottom,   //change width and height to adjust to screen width
-        height = 500 - margin.left - margin.right;
+        // var margin = { top:0,left:-1000,right:0,bottom:0},
+        // width = 880 - margin.top - margin.bottom,   //change width and height to adjust to screen width
+        // height = 500 - margin.left - margin.right;
+        width = (screen.width * 0.75) - margin.left - margin.right,   //change width and height to adjust to screen width
+        height = (screen.width * 0.75 / 1.76) - margin.top - margin.bottom;
         var svg = d3.select('#map')
             .append('svg')
             .attr('width',width + margin.left + margin.right)
             .attr('height',height + margin.top + margin.bottom);
         var url = d3.json('https://cdn.jsdelivr.net/npm/@d3ts/us-atlas@1/states-10m.json');
         var g = svg.append('g');
-        var projection = d3.geoAlbersUsa().scale(1000);//.translate([width/2,height/2]);
+        // var projection = d3.geoAlbersUsa().scale(1000);//.translate([width/2,height/2]);
+        var projection = d3.geoAlbersUsa().scale(screen.width * 0.75);//.translate([width/2,height/2]);
         var path = d3.geoPath().projection(projection);
         let i = -1;
         url.then(function(data) {
@@ -102,15 +107,18 @@ class View{
     }
     createLegend(){
         var svg = d3.select("#legend").append('svg').attr('width','800').attr('height','80');
+        // var svg = d3.select("#legend").append('svg').attr('width',screen.width * 0.8).attr('height','80');
         var keys = ['0%','10%','20%','30%','40%','50%','60%','70%','80%','90%','100%'];
         var color = ['lightcyan','paleturquoise','mediumturquoise','darkturquoise','cadetblue','lightcoral','salmon','red','firebrick','darkred','purple'];
-        var size = 40
+        // var size = screen.width * 0.1           //do 
+        var size = 30           
         svg.selectAll("mydots")
         .data(keys)
         .enter()
         .append("rect")
         .attr("y", 30)
-        .attr("x", function(d,i){ return size*5 + i*(size+2)}) // 100 is where the first dot appears. 25 is the distance between dots
+        // .attr("x", function(d,i){ return size*5 + i*(size+2)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("x", function(d,i){ return i*(size+2)}) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("width", size)
         .attr("height", 15)
         .style("fill", function(d,i){ return color[i]})
@@ -120,15 +128,17 @@ class View{
         .data(keys)
         .enter()
         .append("text")
-        .attr("y", 20 + size)
-        .attr("x", function(d,i){ return i*(size+2) + (size*5)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("y", 25 + size)
+        // .attr("y", size)
+        // .attr("x", function(d,i){ return i*(size+2) + (size*5)}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("x", function(d,i){ return i*(size+2)}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d,i){ return color[i]})
         .text(function(d,i){ return keys[i]})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
 
         svg.append('text')
-            .attr('x',size*5)
+            .attr('x',size*3)
             .attr('y',20)
             .style('fill','white')
             .text('% of population infected');
