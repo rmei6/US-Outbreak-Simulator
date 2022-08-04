@@ -11,6 +11,7 @@ class View{
         this.createMap();
         this.createLegend();
         this.createForm();
+        // debugger;
         this.data = data;
         // console.log(data);
         this.sim = new Simulation(data,document);
@@ -39,6 +40,7 @@ class View{
 
         let that = this;
         setTimeout(function(){
+            // debugger;
             const tooltip = d3.select(`body`)
                             .append('div')
                             .attr('class','tooltip-donut')
@@ -77,12 +79,13 @@ class View{
     createMap(){
         // debugger;
         // maybe get the min between window.innerwidth and window.outerwidth
+        var window_width = window.innerWidth < window.outerWidth ? window.innerWidth : window.outerWidth;
         var margin = { top:0,left:0,right:0,bottom:0},
         // var margin = { top:0,left:-1000,right:0,bottom:0},
         // width = 880 - margin.top - margin.bottom,   //change width and height to adjust to screen width
         // height = 500 - margin.left - margin.right;
-        width = (screen.width * 0.9) - margin.left - margin.right,   //change width and height to adjust to screen width
-        height = (screen.width * 0.9 / 1.76) - margin.top - margin.bottom;
+        width = (window_width * 0.9) - margin.left - margin.right,   //change width and height to adjust to screen width
+        height = (window_width * 0.9 / 1.76) - margin.top - margin.bottom;
         var svg = d3.select('#map')
             .append('svg')
             .attr('width',width + margin.left + margin.right)
@@ -90,7 +93,7 @@ class View{
         var url = d3.json('https://cdn.jsdelivr.net/npm/@d3ts/us-atlas@1/states-10m.json');
         var g = svg.append('g');
         // var projection = d3.geoAlbersUsa().scale(1000);//.translate([width/2,height/2]);
-        var projection = d3.geoAlbersUsa().scale(screen.width * 0.75);//.translate([width/2,height/2]);
+        var projection = d3.geoAlbersUsa().scale(window_width * 0.75);//.translate([width/2,height/2]);
         var path = d3.geoPath().projection(projection);
         let i = -1;
         url.then(function(data) {
@@ -107,12 +110,13 @@ class View{
         })
     }
     createLegend(){
+        var window_width = window.innerWidth < window.outerWidth ? window.innerWidth : window.outerWidth;
         var svg = d3.select("#legend").append('svg').attr('width','800').attr('height','80');
         // var svg = d3.select("#legend").append('svg').attr('width',screen.width * 0.8).attr('height','80');
         var keys = ['0','10','20','30','40','50','60','70','80','90','100'];
         var color = ['lightcyan','paleturquoise','mediumturquoise','darkturquoise','cadetblue','lightcoral','salmon','red','firebrick','darkred','purple'];
         // var size = screen.width * 0.1           //do 
-        var size = screen.width < 375 ? screen.width / 12.5 : 30           
+        var size = window_width < 375 ? window_width / 12.5 : 30           
         svg.selectAll("mydots")
         .data(keys)
         .enter()
