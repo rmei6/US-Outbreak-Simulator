@@ -76,6 +76,7 @@ class View{
     }
     createMap(){
         // debugger;
+        // maybe get the min between window.innerwidth and window.outerwidth
         var margin = { top:0,left:0,right:0,bottom:0},
         // var margin = { top:0,left:-1000,right:0,bottom:0},
         // width = 880 - margin.top - margin.bottom,   //change width and height to adjust to screen width

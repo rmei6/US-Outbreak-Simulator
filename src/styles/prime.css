@@ -305,18 +305,21 @@ html, body, header, nav, h1, a,
     }
   }
   path.state{
-    transform: translate(9vw,10vh);
+    /* transform: translate(9vw,10vh); */
+    transform: translate(20vw,12vw);
   }
   @media only screen and (max-width: 1000px) {
     path.state{
       /* transform: translate(-10vw,-10vh); */
-      transform: translate(20vw,10vh);
+      /* transform: translate(20vw,10vh); */
+      transform: translate(20vw,10vw);
     }
   }
 
   @media only screen and (max-width: 950px) { 
     path.state{
-      transform: translate(-10vw,-5vh);
+      /* transform: translate(-10vw,-5vh); */
+      transform: translate(-10vw,-5vw);
     }
   }
   
@@ -324,19 +327,22 @@ html, body, header, nav, h1, a,
     path.state{
       /* transform: translate(-30vw,-30vh); */
       /* transform: translate(-30vw,-20vh); */
-      transform: translate(-10vw,-10vh);
+      /* transform: translate(-10vw,-10vh); */
+      transform: translate(-10vw,-5vw);
     }
   }
 
   @media only screen and (max-width: 850px) { 
     path.state{
-      transform: translate(-10vw,-4vh);
+      /* transform: translate(-10vw,-4vh); */
+      transform: translate(-10vw,-4vw);
     }
   }
 
   @media only screen and (max-width: 700px) { 
     path.state{
-      transform: translate(-15vw,-15vh);
+      /* transform: translate(-15vw,-15vh); */
+      transform: translate(-15vw,-15vw);
     }
   }
 
