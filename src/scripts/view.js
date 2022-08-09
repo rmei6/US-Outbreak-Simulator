@@ -40,7 +40,12 @@ class View{
 
         let that = this;
         setTimeout(function(){
-            // debugger;
+            // debugger;    Ex: 'matrix(1, 0, 0, 1, -86.8, -43.4)'
+            that.map_x_location = parseFloat(getComputedStyle(document.querySelector("path.state")).transform.split(',')[4]);
+            that.map_y_location = parseFloat(getComputedStyle(document.querySelector("path.state")).transform.split(',')[5]);
+            that.original_map_x_location = parseFloat(getComputedStyle(document.querySelector("path.state")).transform.split(',')[4]);
+            that.original_map_y_location = parseFloat(getComputedStyle(document.querySelector("path.state")).transform.split(',')[5]);
+            that.step = (window.innerWidth < window.outerWidth ? window.innerWidth : window.outerWidth) / 100.0;
             const tooltip = d3.select(`body`)
                             .append('div')
                             .attr('class','tooltip-donut')
