@@ -38,6 +38,11 @@ class View{
         this.unpauseSim = this.unpauseSim.bind(this);
         this.unpause.addEventListener('click',this.unpauseSim);
 
+        this.moveMapDown = this.moveMapDown.bind(this);
+        this.moveMapUp = this.moveMapUp.bind(this);
+        this.moveMapRight = this.moveMapRight.bind(this);
+        this.moveMapLeft = this.moveMapLeft.bind(this);
+
         let that = this;
         setTimeout(function(){
             // debugger;    Ex: 'matrix(1, 0, 0, 1, -86.8, -43.4)'
@@ -46,6 +51,19 @@ class View{
             that.original_map_x_location = parseFloat(getComputedStyle(document.querySelector("path.state")).transform.split(',')[4]);
             that.original_map_y_location = parseFloat(getComputedStyle(document.querySelector("path.state")).transform.split(',')[5]);
             that.step = (window.innerWidth < window.outerWidth ? window.innerWidth : window.outerWidth) / 100.0;
+            // debugger;
+            that.up_arrow = document.getElementById('up-arrow');
+            that.up_arrow.addEventListener('click',that.moveMapUp);
+
+            that.down_arrow = document.getElementById('down-arrow');
+            that.down_arrow.addEventListener('click',that.moveMapDown);
+
+            that.left_arrow = document.getElementById('left-arrow');
+            that.left_arrow.addEventListener('click',that.moveMapLeft);
+
+            that.right_arrow = document.getElementById('right-arrow');
+            that.right_arrow.addEventListener('click',that.moveMapRight);
+
             const tooltip = d3.select(`body`)
                             .append('div')
                             .attr('class','tooltip-donut')
@@ -279,6 +297,38 @@ class View{
         this.unpause.style.display = 'none';
         this.pause.style.display = 'block';
         this.sim.startSim();
+    }
+
+    moveMapUp(e){ // subtract from y
+        e.preventDefault();
+        var states = document.querySelectorAll('path.state');
+        this.map_y_location -= this.step;
+        var setting = `matrix(1, 0, 0, 1, ${this.map_x_location}, ${this.map_y_location})`;
+        states.forEach(state => state.style.transform = setting)
+    }
+
+    moveMapDown(e){// add to y
+        e.preventDefault();
+        var states = document.querySelectorAll('path.state');
+        this.map_y_location += this.step;
+        var setting = `matrix(1, 0, 0, 1, ${this.map_x_location}, ${this.map_y_location})`;
+        states.forEach(state => state.style.transform = setting)
+    }
+
+    moveMapLeft(e){// subtract from x
+        e.preventDefault();
+        var states = document.querySelectorAll('path.state');
+        this.map_x_location -= this.step;
+        var setting = `matrix(1, 0, 0, 1, ${this.map_x_location}, ${this.map_y_location})`;
+        states.forEach(state => state.style.transform = setting)
+    }
+
+    moveMapRight(e){// add to x
+        e.preventDefault();
+        var states = document.querySelectorAll('path.state');
+        this.map_x_location += this.step;
+        var setting = `matrix(1, 0, 0, 1, ${this.map_x_location}, ${this.map_y_location})`;
+        states.forEach(state => state.style.transform = setting)
     }
 }
 

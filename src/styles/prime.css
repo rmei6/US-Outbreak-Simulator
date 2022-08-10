@@ -373,5 +373,35 @@ html, body, header, nav, h1, a,
 
   #legend{
     margin-left: 2vw;
-    width: calc(100% - 2vw);
+    /* width: calc(100% - 2vw); */
+    width: min(400px,calc(100% - 2vw));
+  }
+
+  .arrows-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    color: white;
+  }
+
+  .up-down-arrows-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fa-arrow-up{
+    margin-bottom: 4vw;
+  }
+
+  .fas:hover{
+    color: #4CAF50;
+  }
+
+  .bottom-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
