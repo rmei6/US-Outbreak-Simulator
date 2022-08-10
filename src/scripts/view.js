@@ -43,6 +43,8 @@ class View{
         this.moveMapRight = this.moveMapRight.bind(this);
         this.moveMapLeft = this.moveMapLeft.bind(this);
 
+        this.moveMapBack = this.moveMapBack.bind(this);
+
         let that = this;
         setTimeout(function(){
             // debugger;    Ex: 'matrix(1, 0, 0, 1, -86.8, -43.4)'
@@ -63,6 +65,9 @@ class View{
 
             that.right_arrow = document.getElementById('right-arrow');
             that.right_arrow.addEventListener('click',that.moveMapRight);
+
+            that.reset_position = document.getElementById('reset-map-position');
+            that.reset_position.addEventListener('click',that.moveMapBack);
 
             const tooltip = d3.select(`body`)
                             .append('div')
@@ -328,6 +333,15 @@ class View{
         var states = document.querySelectorAll('path.state');
         this.map_x_location += this.step;
         var setting = `matrix(1, 0, 0, 1, ${this.map_x_location}, ${this.map_y_location})`;
+        states.forEach(state => state.style.transform = setting)
+    }
+
+    moveMapBack(e){
+        e.preventDefault();
+        var states = document.querySelectorAll('path.state');
+        this.map_x_location = this.original_map_x_location;
+        this.map_y_location = this.original_map_y_location;
+        var setting = `matrix(1, 0, 0, 1, ${this.original_map_x_location}, ${this.original_map_y_location})`;
         states.forEach(state => state.style.transform = setting)
     }
 }

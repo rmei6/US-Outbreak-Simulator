@@ -399,6 +399,7 @@ html, body, header, nav, h1, a,
 
   .fas:hover{
     color: #4CAF50;
+    cursor: pointer;
   }
 
   .bottom-container{
@@ -407,6 +408,14 @@ html, body, header, nav, h1, a,
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+
+  #reset-map-position{
+    font-size: 3vw;
+    margin-left: 5vw;
+    border: 1px solid white;
+    border-radius: 1vw;
+    padding: 1vw;
   }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
