@@ -415,3 +415,9 @@ html, body, header, nav, h1, a,
     padding: 1vw;
     cursor: pointer;
   }
+
+  .site-link-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
